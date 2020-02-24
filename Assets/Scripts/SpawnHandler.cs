@@ -22,6 +22,7 @@ public class SpawnHandler : MonoBehaviour
     void Start()
     {
         spawners = spawnerObjects.Select(o => o.GetComponentInChildren<Spawner>());
+        elapsed = spawnTime;
     }
 
     private float elapsed;
@@ -46,7 +47,7 @@ public class SpawnHandler : MonoBehaviour
     void Spawn(Spawner s)
     {
 
-        var o = Instantiate(toSpawn, s.transform.position, Quaternion.identity, null);
-        o.GetComponent<Fighter>().Init(s);
+        var o = Instantiate(s.toSpawn, null);
+        o.GetComponentInChildren<Fighter>().Init(s);
     }
 }

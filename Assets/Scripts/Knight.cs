@@ -2,26 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Knight : MonoBehaviour
 {
+    Fighter fighter;
+    IFighter iFighter;
     // Start is called before the first frame update
-    public bool isSpawning;
-    public GameObject toSpawn;
-    
-    public Team team;
     void Start()
     {
-        
+        fighter = GetComponentInChildren<Fighter>();
+        iFighter = GetComponent<IFighter>();
+        fighter.Attack = target => target.Health -= iFighter.damage;
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public void Spawn()
-    {
-
     }
 }
